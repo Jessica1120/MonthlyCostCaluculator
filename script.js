@@ -1,9 +1,16 @@
-
 var employeeArray = [];
 //put interactive functions here - calculate button
+$(document).ready(readyNow);
+
+function readyNow() {
+    console.log('ready');
+    console.log(employeeArray);
+    $('#add').on('click', addEmployee);
+}
 
 function addEmployee() {
-    new Employee ($('#firstNameIn').val(), $('#lastNameIn').val(), $('idNumberIn').val(), $('#titleIn').val(), $('annualSalaryIn').val());
+    this.idNumber = idNumberIn;
+    new Employee ($('#firstNameIn').val(), $('#lastNameIn').val(), $('#idNumberIn').val(), $('#titleIn').val(), $('#annualSalaryIn').val());
     //new Employee added and pushed into an array
 }
 
