@@ -1,11 +1,12 @@
 var employeeArray = [];
 var salaryArray = [];
-var salaryTotals = 0;
+//var sum = 0;
 
 $(document).ready(readyNow);
 
 function readyNow() {
     $('#add').on('click', addEmployee);//adds employee to array when button is clicked  
+   // costCalculator();
 }
 
 function Employee (firstNameIn, lastNameIn, idNumberIn, titleIn, annualSalaryIn) {
@@ -15,9 +16,9 @@ function Employee (firstNameIn, lastNameIn, idNumberIn, titleIn, annualSalaryIn)
     this.title = titleIn;
     this.annualSalary = annualSalaryIn;
     employeeArray.push( this);
-    salaryArray.push (parseInt(this.annualSalary));
+    salaryArray.push(parseInt(this.annualSalary));
   
-} //object constructor creates employee using input data and pushes employee object into array
+} 
 
 function addEmployee() {
     new Employee ($('#firstNameIn').val(), $('#lastNameIn').val(), $('#idNumberIn').val(), $('#titleIn').val(), $('#annualSalaryIn').val() )
@@ -27,24 +28,17 @@ function addEmployee() {
     //appends employee information input to div object
     $('main').append($showEmployee)//adds employee div object to DOM
     
+    var total = salaryArray.reduce(function(sum, value) {
+        return sum + value;
+    }, 0)/12; //adds total salaries divides by 12 months
+
     $('#firstNameIn').val('');
     $('#lastNameIn').val('');
     $('#idNumberIn').val(''); 
     $('#titleIn').val('');
     $('#annualSalaryIn').val('');//empties the fields after clicking add
     console.log(employeeArray);
-    console.log(salaryArray);   
+    console.log(salaryArray);
+    console.log(total);   
 } // end addEmployee Function
-  
-//function costCalculator() {
-  //  parseInt(this.annualSalary);
-    //salaryTotals += this.annualSalary; ---remember this
-    //console.log(salaryTotals)
-//}
 
-//function costCalculator() {
-   // var salary = []
-   // for(var i = 0; i<= employeeArray.length; i++) {
-   //     console.log(employeeArray[i].annualSalary);
-   // };
-//}
