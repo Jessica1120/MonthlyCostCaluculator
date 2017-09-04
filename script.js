@@ -1,12 +1,10 @@
 var employeeArray = [];
 var salaryArray = [];
-//var sum = 0;
 
 $(document).ready(readyNow);
 
 function readyNow() {
     $('#add').on('click', addEmployee);//adds employee to array when button is clicked  
-   // costCalculator();
 }
 
 function Employee (firstNameIn, lastNameIn, idNumberIn, titleIn, annualSalaryIn) {
@@ -28,10 +26,12 @@ function addEmployee() {
     //appends employee information input to div object
     $('main').append($showEmployee)//adds employee div object to DOM
     
-    var total = salaryArray.reduce(function(sum, value) {
+    var total = Math.round(salaryArray.reduce(function(sum, value) {
         return sum + value;
-    }, 0)/12; //adds total salaries divides by 12 months
-
+    }, 0)/12); //adds total salaries divides by 12 months rounded to nearest whole number
+    var $monthlyTotal = $('<div>')
+        $monthlyTotal.append($('<p>' + (total) + '</p>'));
+    $('#totalMonthlyCost').append($monthlyTotal)
     $('#firstNameIn').val('');
     $('#lastNameIn').val('');
     $('#idNumberIn').val(''); 
