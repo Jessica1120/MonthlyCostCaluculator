@@ -15,7 +15,7 @@ function Employee (firstNameIn, lastNameIn, idNumberIn, titleIn, annualSalaryIn)
     this.title = titleIn;
     this.annualSalary = annualSalaryIn;
     employeeArray.push( this);
-    salaryArray.push (this.annualSalary);
+    salaryArray.push (parseInt(this.annualSalary));
   
 } //object constructor creates employee using input data and pushes employee object into array
 
